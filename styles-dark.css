@@ -1,87 +1,81 @@
+/* Divine Dark Mode colors for the style */
 
-
-
-/* Default colors for the style */
-
-
-/* Strings - typically green to represent literal text */
-.hljs-string {
-  color: #ff00fb !important; 
+/* Background - A deep and subtle base for the divine contrast */
+.p-4 {
+  background-color: #1e2127 !important;
 }
 
+/* Strings - A lush green, the color of life and growth */
 .hljs-string {
-  color: #98c379 !important; 
+  color: #98c379 !important;
 }
 
-/* Comments - a subtle grey to distinguish them from code */
-
-
+/* Comments - A muted grey, like whispers of wisdom from ages past */
 .hljs-comment {
-  color: #7f848e !important; 
-  }
+  color: #5c6370 !important;
+}
 
-/* Keywords - a soft blue for reserved words */
+/* Keywords - A soft but striking blue, reminiscent of the sky just before dawn */
 .hljs-keyword {
-color: #61afef !important; 
+  color: #61afef !important;
 }
 
-/* Titles and classes - a modest orange for clarity */
+/* Titles and classes - A warm, modest orange, like the first light of dawn */
 .hljs-title, .class_ {
-color: #e5c07b !important; 
+  color: #e5c07b !important;
 }
 
-/* Functions - a different shade of blue for functions */
+/* Functions - A cooler shade of blue, like a gentle river of thought */
 .hljs-title, .function_ {
-color: #56b6c2 !important; 
+  color: #56b6c2 !important;
 }
 
-/* Types - a lighter blue to differentiate from functions */
+/* Types - A lighter, celestial blue for a touch of the ethereal */
 .hljs-type {
-color: #4aa5f0 !important; 
+  color: #4aa5f0 !important;
 }
 
-/* Variables - a light grey to stand out against the background */
+/* Variables - A light grey, the color of morning mist */
 .hljs-variable {
-color: #dcdfe4 !important; 
+  color: #dcdfe4 !important;
 }
 
-/* Backround */
-.p-4{
-  background-color: #282c34 !important; 
-  }
-
-/* Numbers - a bright, distinguishable purple */
+/* Numbers - A bright, distinguishable purple, like twilight between worlds */
 .hljs-number {
-color: #c678dd !important; 
+  color: #c678dd !important;
 }
 
-/* Literals - a slightly lighter purple for contrast with numbers */
+/* Literals - A slightly lighter purple, for contrast and clarity */
 .hljs-literal {
-color: #d55fde !important; 
+  color: #d55fde !important;
 }
 
+/* Attributes - A rustic orange, like ancient manuscripts */
 .hljs-attr {
-color: #d19a66 !important; 
+  color: #d19a66 !important;
 }
 
-.hljs-punctuation{
-color: #abb2bf !important; 
+/* Punctuation - A soft, ghostly grey for subtle guidance */
+.hljs-punctuation {
+  color: #abb2bf !important;
 }
 
-/* Tag HTML  */
-.hljs-tag{
-color: #e06c75 !important; 
+/* HTML Tags - A deep wine red, evocative of history and power */
+.hljs-tag {
+  color: #e06c75 !important;
 }
 
-/* Meta data  */
-.hljs-meta{
-color: #1ca551 !important; 
+/* Meta data - A vibrant, lively green, full of potential and growth */
+.hljs-meta {
+  color: #7eca9c !important;
 }
 
+/* Selector class - A fiery orange, for passion and creativity */
 .hljs-selector-class {
-  color: #fd971f !important;
+  color: #e2c08d !important;
 }
 
-.hljs-built_in{
+/* Built-in functions - A serene blue, like the endless sky */
+.hljs-built_in {
   color: #61afef !important;
 }
