@@ -84,6 +84,27 @@
       border-color: #9f00ff;
       box-shadow: 0 0 0 2px rgba(159, 0, 255, 0.5);
     }
+
+    .footer {
+      position: absolute;
+      bottom: 10px;
+      width: 100%;
+      text-align: center;
+      font-size: 0.8rem;
+      color: #a9b1ba; /* Grey text */
+    }
+
+    .footer a {
+      color: #9f00ff; /* Light purple color for links to match the button */
+      text-decoration: none;
+    }
+
+    .footer a:hover {
+      text-decoration: underline;
+    }
+
+
+
   </style>
 </head>
 <body>
@@ -100,6 +121,11 @@
     </select>
     <button id="applyButton">Apply Theme</button>
   </div>
+
+    <div class="footer">
+      About the developer: <a href="https://github.com/Tantris514/ChatGPT-Code-Snippets-Highlighter" target="_blank">GitHub</a>
+    </div>
+
   <script src="popup.js"></script>
 </body>
 </html>

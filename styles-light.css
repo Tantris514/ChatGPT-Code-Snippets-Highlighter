@@ -74,3 +74,7 @@
 .hljs-selector-class {
   color: #e5c07b !important;
 }
+
+.hljs-built_in{
+  color: #2b007a !important;
+}
