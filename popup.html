@@ -3,64 +3,102 @@
 <head>
   <title>ChatGPT Code Highlighter</title>
   <style>
-    body {
-      font-family: 'Arial', sans-serif;
-      background-color: #f9f9f9;
+    * {
       margin: 0;
-      padding: 20px;
-      color: #333;
-    }
-
-    h1 {
-      color: #333;
-    }
-
-    #themeSelector {
-      padding: 10px;
-      border-radius: 5px;
-      border: 1px solid #ddd;
-      margin-bottom: 20px;
-      width: 100%;
+      padding: 0;
       box-sizing: border-box;
     }
 
-    button {
-      padding: 10px 20px;
-      background-color: #007bff;
-      color: white;
-      border: none;
-      border-radius: 5px;
-      cursor: pointer;
-    }
-
-    button:hover {
-      background-color: #0056b3;
+    body, html {
+      height: 100%;
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: #121212;
+      color: #f0f0f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 10px;
     }
 
     .container {
-      background: white;
-      padding: 20px;
-      border-radius: 8px;
-      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      width: 80%; 
+      max-width: 600px;
+      padding: 2rem;
+      background: #1c1c1e;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      text-align: center;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #0d6efd;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      letter-spacing: 1px;
+      padding: 0 3rem; /* Add horizontal padding */
+ 
+    }
+
+    p {
+      font-size: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    select {
+      width: calc(100% - 1rem); 
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 2px solid #333;
+      background: #282828;
+      color: #ddd;
+      font-size: 1rem;
+      margin-bottom: 1rem;
+      cursor: pointer;
+    }
+
+    button {
+      width: calc(100% - 1rem); /* Adjust width to allow for padding */
+      padding: 0.75rem;
+      border: none;
+      border-radius: 5px;
+      background-image: linear-gradient(45deg, #0d6efd, #9f00ff);
+      color: white;
+      font-size: 1rem;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+    }
+
+    button:hover {
+      background-image: linear-gradient(45deg, #9f00ff, #0d6efd);
+    }
+
+    button:focus,
+    select:focus {
+      outline: none;
+      border-color: #9f00ff;
+      box-shadow: 0 0 0 2px rgba(159, 0, 255, 0.5);
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>ChatGPT Code Highlighter</h1>
-    <p>Select a theme for code snippets:</p>
-
+    <h1>Code Highlighter</h1>
+    <p>Select a theme for your code snippets:</p>
     <select id="themeSelector">
-      <option value="default">Default</option>
-      <option value="dark">Dark</option>
-      <option value="light">Light</option>
+      <option value="default">Default Theme</option>
+      <option value="dark">Dark Theme</option>
+      <option value="light">Light Theme</option>
       <option value="monkai">Monkai</option>
       <!-- Add more themes as needed -->
     </select>
-
     <button id="applyButton">Apply Theme</button>
   </div>
-
   <script src="popup.js"></script>
 </body>
 </html>
