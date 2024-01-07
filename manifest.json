@@ -1,0 +1,30 @@
+{
+    "manifest_version": 3,
+    "name": "ChatGPT Code Highlighter",
+    "version": "1.0",
+    "description": "Improve the appearance of code snippets in ChatGPT code snippets.",
+    "permissions": ["activeTab", "scripting"],
+    "action": {
+      "default_popup": "popup.html",
+      "default_icon": {
+        "16": "Images/icon16.png",
+        "48": "Images/icon48.png",
+        "128": "Images/icon128.png"
+      }
+    },
+    "background": {
+      "service_worker": "background.js"
+    },
+    "content_scripts": [
+      {
+        "matches": ["https://chat.openai.com/*"],
+        "css": ["styles.css"]
+      }
+    ],
+    "icons": {
+      "16": "Images/icon16.png",
+      "48": "Images/icon48.png",
+      "128": "Images/icon128.png"
+    }
+  }
+  
