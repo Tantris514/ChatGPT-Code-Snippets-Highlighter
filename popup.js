@@ -22,8 +22,20 @@ document.getElementById('applyButton').addEventListener('click', function() {
         console.log('Theme is set to ' + selectedTheme);
     });
 
-    // Send the selected theme to the content script
+    // Only send the message to a tab if it's an HTTP/HTTPS page
     chrome.tabs.query({active: true, currentWindow: true}, function(tabs) {
-      chrome.tabs.sendMessage(tabs[0].id, {type: "CHANGE_THEME", theme: selectedTheme});
+        if (tabs[0] && tabs[0].id && (tabs[0].url.startsWith("http://") || tabs[0].url.startsWith("https://"))) {
+            chrome.tabs.sendMessage(tabs[0].id, {type: "CHANGE_THEME", theme: selectedTheme}, function(response) {
+                if (chrome.runtime.lastError) {
+                    // Handle the error gracefully
+                    console.error("Error sending message: ", chrome.runtime.lastError.message);
+                } else {
+                    // Message was sent successfully, handle the response if needed
+                    console.log('Theme change message sent', response);
+                }
+            });
+        } else {
+            console.log("Content script not available on this tab.");
+        }
     });
 });

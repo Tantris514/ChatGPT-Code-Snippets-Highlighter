@@ -5,11 +5,20 @@ chrome.storage.sync.get('selectedTheme', function(data) {
     }
 });
 
+// This will mark the content script as available for messaging
+window.isContentScriptAvailable = true;
+
+// Existing code to handle the theme change
 chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     if (request.type === "CHANGE_THEME") {
-      switchTheme(request.theme);
+        switchTheme(request.theme);
+        sendResponse({status: "Theme changed"});
     }
+    // Return true to indicate you wish to send a response asynchronously
+    return true;
 });
+
+
 
   
   function switchTheme(themeName) {

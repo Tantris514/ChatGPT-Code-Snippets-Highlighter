@@ -1,0 +1,84 @@
+/* GitHub Dark color scheme for code highlighting */
+
+/* Background */
+
+  
+    .p-4 {
+    background-color: #24292e !important;
+    }
+
+
+  /* Strings - blue */
+  .hljs-string {
+    color: #9ecbff !important;
+  }
+  
+  /* Comments - grey */
+  .hljs-comment {
+    color: #6a737d !important;
+  }
+  
+  /* Keywords - red */
+  .hljs-keyword {
+    color: #f97583 !important;
+  }
+  
+  /* Titles and classes - purple */
+  .hljs-title, .class_ {
+    color: #b392f0 !important;
+  }
+  
+  /* Functions - use a bright blue */
+  .function_ {
+    color: #79b8ff !important;
+  }
+  
+  /* Types - a different shade of blue for types */
+  .hljs-type {
+    color: #79b8ff !important;
+  }
+  
+  /* Variables - orange */
+  .hljs-variable {
+    color: #ffab70 !important;
+  }
+  
+  /* Numbers - light blue */
+  .hljs-number {
+    color: #79b8ff !important;
+  }
+  
+  /* Literals - bright green for literals */
+  .hljs-literal {
+    color: #85e89d !important;
+  }
+  
+  /* Attributes - use green from links */
+  .hljs-attr {
+    color: #79b8ff !important;
+  }
+  
+  /* Punctuation - lighter foreground */
+  .hljs-punctuation {
+    color: #d1d5da !important;
+  }
+  
+  /* HTML Tags - green similar to inserted text */
+  .hljs-tag {
+    color: #34d058 !important;
+  }
+  
+  /* Meta data - bright blue for meta */
+  .hljs-meta {
+    color: #79b8ff !important;
+  }
+  
+  .hljs-selector-class {
+    color: #e1e4e8 !important;
+  }
+
+  /* Builtin eg: print open */
+  .hljs-built_in{
+    color: #b392f0 !important;
+  }
+  

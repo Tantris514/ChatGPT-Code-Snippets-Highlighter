@@ -18,7 +18,9 @@
   "content_scripts": [
     {
       "matches": ["https://chat.openai.com/*"],
-      "js": ["content.js"] 
+      "js": ["content.js"], 
+      "run_at": "document_idle"
+
     }
   ],
   "icons": {
@@ -33,9 +35,10 @@
         "styles-dark.css",
         "styles-light.css",
         "styles-monkai.css",
+        "styles-github.css",
         "popup.js"
       ],
-      "matches": ["<all_urls>"]
+      "matches": ["https://chat.openai.com/*"]
     }
   ]
 }
