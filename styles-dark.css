@@ -9,18 +9,16 @@
   color: #ff00fb !important; 
 }
 
-/* .hljs-string {
+.hljs-string {
   color: #98c379 !important; 
-} */
-
-/* Comments - a subtle grey to distinguish them from code */
-.hljs-comment {
-color: #b60000 !important; 
 }
 
-/* .hljs-comment {
+/* Comments - a subtle grey to distinguish them from code */
+
+
+.hljs-comment {
   color: #7f848e !important; 
-  } */
+  }
 
 /* Keywords - a soft blue for reserved words */
 .hljs-keyword {
