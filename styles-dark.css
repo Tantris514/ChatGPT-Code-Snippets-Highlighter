@@ -1,0 +1,86 @@
+
+
+
+/* Default colors for the style */
+
+
+/* Strings - typically green to represent literal text */
+.hljs-string {
+  color: #ff00fb !important; 
+}
+
+/* .hljs-string {
+  color: #98c379 !important; 
+} */
+
+/* Comments - a subtle grey to distinguish them from code */
+.hljs-comment {
+color: #b60000 !important; 
+}
+
+/* .hljs-comment {
+  color: #7f848e !important; 
+  } */
+
+/* Keywords - a soft blue for reserved words */
+.hljs-keyword {
+color: #61afef !important; 
+}
+
+/* Titles and classes - a modest orange for clarity */
+.hljs-title, .class_ {
+color: #e5c07b !important; 
+}
+
+/* Functions - a different shade of blue for functions */
+.hljs-title, .function_ {
+color: #56b6c2 !important; 
+}
+
+/* Types - a lighter blue to differentiate from functions */
+.hljs-type {
+color: #4aa5f0 !important; 
+}
+
+/* Variables - a light grey to stand out against the background */
+.hljs-variable {
+color: #dcdfe4 !important; 
+}
+
+
+.p-4{
+  background-color: #282c34 !important; 
+  }
+
+/* Numbers - a bright, distinguishable purple */
+.hljs-number {
+color: #c678dd !important; 
+}
+
+/* Literals - a slightly lighter purple for contrast with numbers */
+.hljs-literal {
+color: #d55fde !important; 
+}
+
+.hljs-attr {
+color: #d19a66 !important; 
+}
+
+.hljs-punctuation{
+color: #abb2bf !important; 
+}
+
+/* Tag HTML  */
+.hljs-tag{
+color: #e06c75 !important; 
+}
+
+/* Meta data  */
+.hljs-meta{
+color: #1ca551 !important; 
+}
+
+.hljs-selector-class {
+  color: #fd971f !important;
+}
+

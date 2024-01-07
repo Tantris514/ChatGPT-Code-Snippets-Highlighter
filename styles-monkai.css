@@ -1,0 +1,75 @@
+/* Monokai color scheme for code highlighting */
+
+/* Background */
+.p-4 {
+  background-color: #272822 !important; /* Monokai dark grey background */
+}
+
+/* Strings - green */
+.hljs-string {
+  color: #a6e22e !important;
+}
+
+/* Comments - muted green */
+.hljs-comment {
+  color: #75715e !important;
+}
+
+/* Keywords - pink */
+.hljs-keyword {
+  color: #f92672 !important;
+}
+
+/* Titles and classes - not typically differentiated in Monokai, using keyword color for consistency */
+.hljs-title, .class_ {
+  color: #f92672 !important;
+}
+
+/* Functions - also not typically differentiated, but you can use a shade of orange */
+.function_ {
+  color: #fd971f !important;
+}
+
+/* Types - Monokai does not typically highlight types differently; for diversity, use light blue */
+.hljs-type {
+  color: #66d9ef !important;
+}
+
+/* Variables - no specific color in Monokai, defaults to white */
+.hljs-variable {
+  color: #f8f8f2 !important;
+}
+
+/* Numbers - purple */
+.hljs-number {
+  color: #ae81ff !important;
+}
+
+/* Literals - Monokai does not typically highlight literals differently; use number color for consistency */
+.hljs-literal {
+  color: #ae81ff !important;
+}
+
+/* Attributes - not typically differentiated in Monokai, can use green */
+.hljs-attr {
+  color: #a6e22e !important;
+}
+
+/* Punctuation - white, less bright for contrast */
+.hljs-punctuation {
+  color: #f8f8f2 !important;
+}
+
+/* HTML Tags - pink, similar to keywords */
+.hljs-tag {
+  color: #f92672 !important;
+}
+
+/* Meta data - cyan */
+.hljs-meta {
+  color: #66d9ef !important;
+}
+
+.hljs-selector-class {
+  color: #fd971f !important;
+}

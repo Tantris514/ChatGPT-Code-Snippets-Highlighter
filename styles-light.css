@@ -1,0 +1,76 @@
+/* Light theme for code highlighting */
+
+/* Background */
+.p-4 {
+  background-color: #f5f2f0 !important; /* Soft beige background */
+}
+
+/* Strings - soft blue */
+.hljs-string {
+  color: #6182b8 !important;
+}
+
+/* Comments - muted blue-green */
+.hljs-comment {
+  color: #a0a1a7 !important;
+}
+
+/* Keywords - soft red */
+.hljs-keyword {
+  color: #d85876 !important;
+}
+
+/* Titles and classes - soft purple */
+.hljs-title, .class_ {
+  color: #b16286 !important;
+}
+
+/* Functions - muted green */
+.function_ {
+  color: #789b73 !important;
+}
+
+/* Types - soft orange */
+.hljs-type {
+  color: #d19a66 !important;
+}
+
+/* Variables - soft dark blue */
+.hljs-variable {
+  color: #4078f2 !important;
+}
+
+/* Numbers - muted purple */
+.hljs-number {
+  color: #c184c1 !important;
+}
+
+/* Literals - muted turquoise */
+.hljs-literal {
+  color: #56b6c2 !important;
+}
+
+/* Attributes - soft green */
+.hljs-attr {
+  color: #98c379 !important;
+}
+
+/* Punctuation - darker grey for contrast */
+.hljs-punctuation, code.hljs {
+  color: #5c6370 !important;
+}
+
+/* HTML Tags - soft dark red */
+.hljs-tag {
+  color: #e45649 !important;
+}
+
+/* Meta data - muted dark cyan */
+.hljs-meta {
+  color: #0184bc !important;
+}
+
+/* CSS Class Selectors - soft yellow */
+.hljs-selector-class {
+  color: #e5c07b !important;
+}

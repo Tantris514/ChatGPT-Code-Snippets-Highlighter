@@ -6,13 +6,21 @@
 
 /* Strings - typically green to represent literal text */
 .hljs-string {
-  color: #98c379 !important; 
+  color: #ff00fb !important; 
 }
+
+/* .hljs-string {
+  color: #98c379 !important; 
+} */
 
 /* Comments - a subtle grey to distinguish them from code */
 .hljs-comment {
-color: #7f848e !important; 
+color: #b60000 !important; 
 }
+
+/* .hljs-comment {
+  color: #7f848e !important; 
+  } */
 
 /* Keywords - a soft blue for reserved words */
 .hljs-keyword {
@@ -39,10 +47,10 @@ color: #4aa5f0 !important;
 color: #dcdfe4 !important; 
 }
 
-/* Background - a deep, dark grey for contrast */
-.bg-black{
-background-color: #282c34 !important; 
-}
+
+.p-4{
+  background-color: #282c34 !important; 
+  }
 
 /* Numbers - a bright, distinguishable purple */
 .hljs-number {
@@ -72,4 +80,7 @@ color: #e06c75 !important;
 color: #1ca551 !important; 
 }
 
+.hljs-selector-class {
+  color: #fd971f !important;
+}
 

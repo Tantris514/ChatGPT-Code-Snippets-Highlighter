@@ -2,19 +2,65 @@
 <html>
 <head>
   <title>ChatGPT Code Highlighter</title>
+  <style>
+    body {
+      font-family: 'Arial', sans-serif;
+      background-color: #f9f9f9;
+      margin: 0;
+      padding: 20px;
+      color: #333;
+    }
+
+    h1 {
+      color: #333;
+    }
+
+    #themeSelector {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ddd;
+      margin-bottom: 20px;
+      width: 100%;
+      box-sizing: border-box;
+    }
+
+    button {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background-color: #0056b3;
+    }
+
+    .container {
+      background: white;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+  </style>
 </head>
 <body>
-  <h1>ChatGPT Code Highlighter</h1>
-  <p>Click to enhance code snippets!</p>
+  <div class="container">
+    <h1>ChatGPT Code Highlighter</h1>
+    <p>Select a theme for code snippets:</p>
 
-  <div>
-    <label>Strings Color:</label>
-    <input type="color" id="stringsColor" value="#98c379">
+    <select id="themeSelector">
+      <option value="default">Default</option>
+      <option value="dark">Dark</option>
+      <option value="light">Light</option>
+      <option value="monkai">Monkai</option>
+      <!-- Add more themes as needed -->
+    </select>
+
+    <button id="applyButton">Apply Theme</button>
   </div>
 
-  <!-- Repeat the above block for each style element you want to change, adjusting the id and default value -->
-
-  <button id="applyButton">Apply Changes</button>
-
+  <script src="popup.js"></script>
 </body>
 </html>
