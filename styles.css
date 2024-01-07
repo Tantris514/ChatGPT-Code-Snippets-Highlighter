@@ -62,4 +62,14 @@ color: #d19a66 !important;
 color: #abb2bf !important; 
 }
 
+/* Tag HTML  */
+.hljs-tag{
+color: #e06c75 !important; 
+}
+
+/* Meta data  */
+.hljs-meta{
+color: #1ca551 !important; 
+}
+
 
