@@ -3,7 +3,7 @@
   "name": "ChatGPT Code Highlighter",
   "version": "1.0",
   "description": "Improve the appearance of code snippets in ChatGPT code snippets.",
-  "permissions": ["activeTab", "scripting", "storage"], 
+  "permissions": ["activeTab", "storage"], 
   "action": {
     "default_popup": "popup.html",
     "default_icon": {
