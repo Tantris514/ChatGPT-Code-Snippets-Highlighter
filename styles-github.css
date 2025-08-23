@@ -2,11 +2,10 @@
 
 /* Background */
 
-  
-    .p-4 {
-    background-color: #24292e !important;
-    }
 
+  .p-4 {
+  background-color: #24292e !important;
+  }
 
   /* Strings - blue */
   .hljs-string {

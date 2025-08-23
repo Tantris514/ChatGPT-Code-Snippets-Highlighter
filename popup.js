@@ -38,9 +38,10 @@ function loadThemes() {
         });
 
         let current = data.selectedTheme || 'default';
-        if (!themeSelector.querySelector(`option[value="${current}"]`)) {
+        const exists = Array.from(themeSelector.options).some(opt => opt.value === current);
+        if (!exists) {
             current = 'default';
-            chrome.storage.sync.set({'selectedTheme': current});
+            chrome.storage.local.set({selectedTheme: current});
         }
         themeSelector.value = current;
 
@@ -70,7 +71,8 @@ function renderCustomThemeList(customThemes) {
 
 document.getElementById('createCustomButton').addEventListener('click', function() {
     const section = document.getElementById('customThemeSection');
-    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    const isHidden = window.getComputedStyle(section).display === 'none';
+    section.style.display = isHidden ? 'block' : 'none';
 });
 
 document.getElementById('saveCustomTheme').addEventListener('click', function() {
