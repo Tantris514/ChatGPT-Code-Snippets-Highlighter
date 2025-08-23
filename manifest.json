@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
   "name": "ChatGPT Code Highlighter",
-  "version": "1.1",
+  "version": "1.2",
   "description": "Improve the appearance of code snippets in ChatGPT code snippets.",
   "permissions": [
     "activeTab",
@@ -42,6 +42,7 @@
         "styles-light.css",
         "styles-monkai.css",
         "styles-github.css",
+        "styles-dracula.css",
         "popup.js"
       ],
       "matches": [
