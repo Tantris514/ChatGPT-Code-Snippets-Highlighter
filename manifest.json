@@ -37,12 +37,7 @@
   "web_accessible_resources": [
     {
       "resources": [
-        "styles-default.css",
-        "styles-dark.css",
-        "styles-light.css",
-        "styles-monkai.css",
-        "styles-github.css",
-        "styles-dracula.css",
+        "themes/*.css",
         "popup.js"
       ],
       "matches": [

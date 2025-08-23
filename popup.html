@@ -138,42 +138,13 @@
       background: none;
     }
 
-    #customThemeList {
-      margin-top: 1rem;
-      width: 100%;
-    }
-
-    .custom-theme-item {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 0.5rem;
-    }
-
-    .custom-theme-item button {
-      width: auto;
-      padding: 0.25rem 0.5rem;
-      font-size: 0.8rem;
-      box-shadow: none;
-    }
-
-
-
   </style>
 </head>
 <body>
   <div class="container">
     <h1>Code Highlighter</h1>
     <p>Select a theme for your code snippets:</p>
-    <select id="themeSelector">
-      <option value="default">Default Theme</option>
-      <option value="dark">Dark Theme</option>
-      <option value="light">Light Theme</option>
-      <option value="github">GitHub</option>
-      <option value="monkai">Monkai</option>
-      <option value="dracula">Dracula</option>
-      <!-- Add more themes as needed -->
-    </select>
+    <select id="themeSelector"></select>
     <button id="applyButton">Apply Theme</button>
     <button id="createCustomButton">Create your own!</button>
     <div id="customThemeSection">
@@ -196,8 +167,6 @@
       <div class="color-row"><label for="color-selector">Selector Class</label><input type="color" id="color-selector" value="#e2c08d" /></div>
       <div class="color-row"><label for="color-built-in">Built-in</label><input type="color" id="color-built-in" value="#61afef" /></div>
       <button id="saveCustomTheme">Save Theme</button>
-      <h3 style="margin-top:1rem;">Your Themes</h3>
-      <div id="customThemeList"></div>
     </div>
   </div>
 

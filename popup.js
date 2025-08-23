@@ -18,59 +18,36 @@ function buildCSS(colors) {
 }
 
 function loadThemes() {
-    chrome.storage.sync.get(['selectedTheme', 'customThemes'], function(data) {
-        const themeSelector = document.getElementById('themeSelector');
-        const builtIn = ['default', 'dark', 'light', 'github', 'monkai', 'dracula'];
-
-        // Remove existing custom options
-        Array.from(themeSelector.options).forEach(opt => {
-            if (!builtIn.includes(opt.value)) {
-                themeSelector.removeChild(opt);
-            }
+    chrome.runtime.getPackageDirectoryEntry(function(root) {
+        root.getDirectory('themes', {}, function(dir) {
+            const reader = dir.createReader();
+            reader.readEntries(function(entries) {
+                const themeSelector = document.getElementById('themeSelector');
+                themeSelector.innerHTML = '';
+                entries.forEach(function(entry) {
+                    if (entry.isFile && entry.name.endsWith('.css')) {
+                        const name = entry.name.replace('.css', '');
+                        const option = document.createElement('option');
+                        option.value = name;
+                        option.textContent = name;
+                        themeSelector.appendChild(option);
+                    }
+                });
+                chrome.storage.local.get('selectedTheme', function(data) {
+                    const current = data.selectedTheme || (themeSelector.options[0] && themeSelector.options[0].value);
+                    if (current) {
+                        themeSelector.value = current;
+                    }
+                });
+            });
         });
-
-        const customThemes = data.customThemes || {};
-        Object.keys(customThemes).forEach(name => {
-            const option = document.createElement('option');
-            option.value = name;
-            option.textContent = name + ' (Custom)';
-            themeSelector.appendChild(option);
-        });
-
-        let current = data.selectedTheme || 'default';
-        if (!themeSelector.querySelector(`option[value="${current}"]`)) {
-            current = 'default';
-            chrome.storage.sync.set({'selectedTheme': current});
-        }
-        themeSelector.value = current;
-
-        renderCustomThemeList(customThemes);
-    });
-}
-
-function renderCustomThemeList(customThemes) {
-    const list = document.getElementById('customThemeList');
-    list.innerHTML = '';
-    Object.keys(customThemes).forEach(name => {
-        const item = document.createElement('div');
-        item.className = 'custom-theme-item';
-        const span = document.createElement('span');
-        span.textContent = name;
-        const del = document.createElement('button');
-        del.textContent = 'Delete';
-        del.addEventListener('click', function() {
-            delete customThemes[name];
-            chrome.storage.sync.set({customThemes: customThemes}, loadThemes);
-        });
-        item.appendChild(span);
-        item.appendChild(del);
-        list.appendChild(item);
     });
 }
 
 document.getElementById('createCustomButton').addEventListener('click', function() {
     const section = document.getElementById('customThemeSection');
-    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    const isHidden = window.getComputedStyle(section).display === 'none';
+    section.style.display = isHidden ? 'block' : 'none';
 });
 
 document.getElementById('saveCustomTheme').addEventListener('click', function() {
@@ -95,13 +72,19 @@ document.getElementById('saveCustomTheme').addEventListener('click', function() 
         builtIn: document.getElementById('color-built-in').value,
     };
     const css = buildCSS(colors);
-    chrome.storage.sync.get(['customThemes'], function(data) {
-        const customThemes = data.customThemes || {};
-        customThemes[name] = css;
-        chrome.storage.sync.set({customThemes: customThemes}, function() {
-            document.getElementById('customThemeName').value = '';
-            document.getElementById('customThemeSection').style.display = 'none';
-            loadThemes();
+    chrome.runtime.getPackageDirectoryEntry(function(root) {
+        root.getDirectory('themes', {}, function(dir) {
+            dir.getFile(name + '.css', {create: true}, function(fileEntry) {
+                fileEntry.createWriter(function(writer) {
+                    const blob = new Blob([css], {type: 'text/css'});
+                    writer.onwriteend = function() {
+                        document.getElementById('customThemeName').value = '';
+                        document.getElementById('customThemeSection').style.display = 'none';
+                        loadThemes();
+                    };
+                    writer.write(blob);
+                });
+            });
         });
     });
 });
@@ -110,7 +93,7 @@ document.getElementById('applyButton').addEventListener('click', function() {
     var selectedTheme = document.getElementById('themeSelector').value;
 
     // Save the selected theme using Chrome Storage API
-    chrome.storage.sync.set({'selectedTheme': selectedTheme}, function() {
+    chrome.storage.local.set({'selectedTheme': selectedTheme}, function() {
         console.log('Theme is set to ' + selectedTheme);
     });
 
