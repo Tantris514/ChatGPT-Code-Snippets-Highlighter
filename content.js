@@ -1,5 +1,5 @@
 // When the content script loads, check for a saved theme and apply it
-chrome.storage.sync.get('selectedTheme', function(data) {
+chrome.storage.local.get('selectedTheme', function(data) {
     if (data.selectedTheme) {
         switchTheme(data.selectedTheme);
     }
@@ -28,7 +28,7 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
       style.remove();
     });
 
-    chrome.storage.sync.get(['customThemes'], function(data) {
+    chrome.storage.local.get(['customThemes'], function(data) {
       const customThemes = data.customThemes || {};
       if (customThemes[themeName]) {
         var style = document.createElement('style');
