@@ -27,13 +27,22 @@ chrome.runtime.onMessage.addListener(function(request, sender, sendResponse) {
     existingStyles.forEach(function(style) {
       style.remove();
     });
-  
-    // Load the new theme
-    var link = document.createElement('link');
-    link.href = chrome.runtime.getURL('styles-' + themeName + '.css');
-    link.type = 'text/css';
-    link.rel = 'stylesheet';
-    link.classList.add('custom-theme-style');
-    document.head.appendChild(link);
+
+    chrome.storage.sync.get(['customThemes'], function(data) {
+      const customThemes = data.customThemes || {};
+      if (customThemes[themeName]) {
+        var style = document.createElement('style');
+        style.textContent = customThemes[themeName];
+        style.classList.add('custom-theme-style');
+        document.head.appendChild(style);
+      } else {
+        var link = document.createElement('link');
+        link.href = chrome.runtime.getURL('styles-' + themeName + '.css');
+        link.type = 'text/css';
+        link.rel = 'stylesheet';
+        link.classList.add('custom-theme-style');
+        document.head.appendChild(link);
+      }
+    });
   }
   

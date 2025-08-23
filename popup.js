@@ -1,17 +1,109 @@
-// This function updates the select element to reflect the current theme
-function setCurrentThemeSelection(currentTheme) {
-    var themeSelector = document.getElementById('themeSelector');
-    themeSelector.value = currentTheme;
+function buildCSS(colors) {
+    return `\n.p-4 { background-color: ${colors.background} !important; }\n` +
+           `.hljs-string { color: ${colors.string} !important; }\n` +
+           `.hljs-comment { color: ${colors.comment} !important; }\n` +
+           `.hljs-keyword { color: ${colors.keyword} !important; }\n` +
+           `.hljs-title, .class_ { color: ${colors.title} !important; }\n` +
+           `.hljs-title, .function_ { color: ${colors.function} !important; }\n` +
+           `.hljs-type { color: ${colors.type} !important; }\n` +
+           `.hljs-variable { color: ${colors.variable} !important; }\n` +
+           `.hljs-number { color: ${colors.number} !important; }\n` +
+           `.hljs-literal { color: ${colors.literal} !important; }\n` +
+           `.hljs-attr { color: ${colors.attr} !important; }\n` +
+           `.hljs-punctuation { color: ${colors.punctuation} !important; }\n` +
+           `.hljs-tag { color: ${colors.tag} !important; }\n` +
+           `.hljs-meta { color: ${colors.meta} !important; }\n` +
+           `.hljs-selector-class { color: ${colors.selector} !important; }\n` +
+           `.hljs-built_in { color: ${colors.builtIn} !important; }`;
 }
 
-// Get the currently selected theme from storage and update the select element
-chrome.storage.sync.get('selectedTheme', function(data) {
-    if (data.selectedTheme) {
-        setCurrentThemeSelection(data.selectedTheme);
-    } else {
-        // If there's no theme saved, set it to the default value
-        setCurrentThemeSelection('default');
-    }
+function loadThemes() {
+    chrome.storage.sync.get(['selectedTheme', 'customThemes'], function(data) {
+        const themeSelector = document.getElementById('themeSelector');
+        const builtIn = ['default', 'dark', 'light', 'github', 'monkai', 'dracula'];
+
+        // Remove existing custom options
+        Array.from(themeSelector.options).forEach(opt => {
+            if (!builtIn.includes(opt.value)) {
+                themeSelector.removeChild(opt);
+            }
+        });
+
+        const customThemes = data.customThemes || {};
+        Object.keys(customThemes).forEach(name => {
+            const option = document.createElement('option');
+            option.value = name;
+            option.textContent = name + ' (Custom)';
+            themeSelector.appendChild(option);
+        });
+
+        let current = data.selectedTheme || 'default';
+        if (!themeSelector.querySelector(`option[value="${current}"]`)) {
+            current = 'default';
+            chrome.storage.sync.set({'selectedTheme': current});
+        }
+        themeSelector.value = current;
+
+        renderCustomThemeList(customThemes);
+    });
+}
+
+function renderCustomThemeList(customThemes) {
+    const list = document.getElementById('customThemeList');
+    list.innerHTML = '';
+    Object.keys(customThemes).forEach(name => {
+        const item = document.createElement('div');
+        item.className = 'custom-theme-item';
+        const span = document.createElement('span');
+        span.textContent = name;
+        const del = document.createElement('button');
+        del.textContent = 'Delete';
+        del.addEventListener('click', function() {
+            delete customThemes[name];
+            chrome.storage.sync.set({customThemes: customThemes}, loadThemes);
+        });
+        item.appendChild(span);
+        item.appendChild(del);
+        list.appendChild(item);
+    });
+}
+
+document.getElementById('createCustomButton').addEventListener('click', function() {
+    const section = document.getElementById('customThemeSection');
+    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+});
+
+document.getElementById('saveCustomTheme').addEventListener('click', function() {
+    const name = document.getElementById('customThemeName').value.trim();
+    if (!name) return;
+    const colors = {
+        background: document.getElementById('color-background').value,
+        string: document.getElementById('color-string').value,
+        comment: document.getElementById('color-comment').value,
+        keyword: document.getElementById('color-keyword').value,
+        title: document.getElementById('color-title').value,
+        function: document.getElementById('color-function').value,
+        type: document.getElementById('color-type').value,
+        variable: document.getElementById('color-variable').value,
+        number: document.getElementById('color-number').value,
+        literal: document.getElementById('color-literal').value,
+        attr: document.getElementById('color-attr').value,
+        punctuation: document.getElementById('color-punctuation').value,
+        tag: document.getElementById('color-tag').value,
+        meta: document.getElementById('color-meta').value,
+        selector: document.getElementById('color-selector').value,
+        builtIn: document.getElementById('color-built-in').value,
+    };
+    const css = buildCSS(colors);
+    chrome.storage.sync.get(['customThemes'], function(data) {
+        const customThemes = data.customThemes || {};
+        customThemes[name] = css;
+        chrome.storage.sync.set({customThemes: customThemes}, function() {
+            document.getElementById('customThemeName').value = '';
+            document.getElementById('customThemeSection').style.display = 'none';
+            loadThemes();
+        });
+    });
 });
 
 document.getElementById('applyButton').addEventListener('click', function() {
@@ -39,3 +131,7 @@ document.getElementById('applyButton').addEventListener('click', function() {
         }
     });
 });
+
+// Initialize
+loadThemes();
+

@@ -72,6 +72,7 @@
       font-size: 1rem;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(13, 110, 253, 0.4);
+      margin-top: 0.5rem;
     }
 
     button:hover {
@@ -103,6 +104,59 @@
       text-decoration: underline;
     }
 
+    #customThemeSection {
+      margin-top: 1rem;
+      width: 100%;
+      display: none;
+    }
+
+    #customThemeSection input[type="text"] {
+      width: 100%;
+      padding: 0.5rem;
+      border-radius: 5px;
+      border: 2px solid #333;
+      background: #282828;
+      color: #ddd;
+      margin-bottom: 1rem;
+    }
+
+    .color-row {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 0.5rem;
+    }
+
+    .color-row label {
+      flex: 1;
+      text-align: left;
+      font-size: 0.9rem;
+    }
+
+    .color-row input[type="color"] {
+      border: none;
+      background: none;
+    }
+
+    #customThemeList {
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    .custom-theme-item {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 0.5rem;
+    }
+
+    .custom-theme-item button {
+      width: auto;
+      padding: 0.25rem 0.5rem;
+      font-size: 0.8rem;
+      box-shadow: none;
+    }
+
 
 
   </style>
@@ -121,6 +175,30 @@
       <!-- Add more themes as needed -->
     </select>
     <button id="applyButton">Apply Theme</button>
+    <button id="createCustomButton">Create your own!</button>
+    <div id="customThemeSection">
+      <h2 style="margin-bottom:1rem;">Create Custom Theme</h2>
+      <input type="text" id="customThemeName" placeholder="Theme Name" />
+      <div class="color-row"><label for="color-background">Background</label><input type="color" id="color-background" value="#1e2127" /></div>
+      <div class="color-row"><label for="color-string">Strings</label><input type="color" id="color-string" value="#98c379" /></div>
+      <div class="color-row"><label for="color-comment">Comments</label><input type="color" id="color-comment" value="#5c6370" /></div>
+      <div class="color-row"><label for="color-keyword">Keywords</label><input type="color" id="color-keyword" value="#61afef" /></div>
+      <div class="color-row"><label for="color-title">Titles &amp; Classes</label><input type="color" id="color-title" value="#e5c07b" /></div>
+      <div class="color-row"><label for="color-function">Functions</label><input type="color" id="color-function" value="#56b6c2" /></div>
+      <div class="color-row"><label for="color-type">Types</label><input type="color" id="color-type" value="#4aa5f0" /></div>
+      <div class="color-row"><label for="color-variable">Variables</label><input type="color" id="color-variable" value="#dcdfe4" /></div>
+      <div class="color-row"><label for="color-number">Numbers</label><input type="color" id="color-number" value="#c678dd" /></div>
+      <div class="color-row"><label for="color-literal">Literals</label><input type="color" id="color-literal" value="#d55fde" /></div>
+      <div class="color-row"><label for="color-attr">Attributes</label><input type="color" id="color-attr" value="#d19a66" /></div>
+      <div class="color-row"><label for="color-punctuation">Punctuation</label><input type="color" id="color-punctuation" value="#abb2bf" /></div>
+      <div class="color-row"><label for="color-tag">HTML Tags</label><input type="color" id="color-tag" value="#e06c75" /></div>
+      <div class="color-row"><label for="color-meta">Meta</label><input type="color" id="color-meta" value="#7eca9c" /></div>
+      <div class="color-row"><label for="color-selector">Selector Class</label><input type="color" id="color-selector" value="#e2c08d" /></div>
+      <div class="color-row"><label for="color-built-in">Built-in</label><input type="color" id="color-built-in" value="#61afef" /></div>
+      <button id="saveCustomTheme">Save Theme</button>
+      <h3 style="margin-top:1rem;">Your Themes</h3>
+      <div id="customThemeList"></div>
+    </div>
   </div>
 
     <div class="footer">
