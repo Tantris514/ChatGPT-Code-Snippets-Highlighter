@@ -18,7 +18,8 @@ function buildCSS(colors) {
 }
 
 function loadThemes() {
-    chrome.storage.sync.get(['selectedTheme', 'customThemes'], function(data) {
+    // Use local storage so themes are saved on this device only
+    chrome.storage.local.get(['selectedTheme', 'customThemes'], function(data) {
         const themeSelector = document.getElementById('themeSelector');
         const builtIn = ['default', 'dark', 'light', 'github', 'monkai', 'dracula'];
 
@@ -38,9 +39,10 @@ function loadThemes() {
         });
 
         let current = data.selectedTheme || 'default';
-        if (!themeSelector.querySelector(`option[value="${current}"]`)) {
+        const exists = Array.from(themeSelector.options).some(opt => opt.value === current);
+        if (!exists) {
             current = 'default';
-            chrome.storage.sync.set({'selectedTheme': current});
+            chrome.storage.local.set({selectedTheme: current});
         }
         themeSelector.value = current;
 
@@ -60,7 +62,7 @@ function renderCustomThemeList(customThemes) {
         del.textContent = 'Delete';
         del.addEventListener('click', function() {
             delete customThemes[name];
-            chrome.storage.sync.set({customThemes: customThemes}, loadThemes);
+            chrome.storage.local.set({customThemes: customThemes}, loadThemes);
         });
         item.appendChild(span);
         item.appendChild(del);
@@ -70,7 +72,8 @@ function renderCustomThemeList(customThemes) {
 
 document.getElementById('createCustomButton').addEventListener('click', function() {
     const section = document.getElementById('customThemeSection');
-    section.style.display = section.style.display === 'none' ? 'block' : 'none';
+    const isHidden = window.getComputedStyle(section).display === 'none';
+    section.style.display = isHidden ? 'block' : 'none';
 });
 
 document.getElementById('saveCustomTheme').addEventListener('click', function() {
@@ -95,10 +98,10 @@ document.getElementById('saveCustomTheme').addEventListener('click', function() 
         builtIn: document.getElementById('color-built-in').value,
     };
     const css = buildCSS(colors);
-    chrome.storage.sync.get(['customThemes'], function(data) {
+    chrome.storage.local.get(['customThemes'], function(data) {
         const customThemes = data.customThemes || {};
         customThemes[name] = css;
-        chrome.storage.sync.set({customThemes: customThemes}, function() {
+        chrome.storage.local.set({customThemes: customThemes}, function() {
             document.getElementById('customThemeName').value = '';
             document.getElementById('customThemeSection').style.display = 'none';
             loadThemes();
@@ -110,7 +113,7 @@ document.getElementById('applyButton').addEventListener('click', function() {
     var selectedTheme = document.getElementById('themeSelector').value;
 
     // Save the selected theme using Chrome Storage API
-    chrome.storage.sync.set({'selectedTheme': selectedTheme}, function() {
+    chrome.storage.local.set({'selectedTheme': selectedTheme}, function() {
         console.log('Theme is set to ' + selectedTheme);
     });
 
